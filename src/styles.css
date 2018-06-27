@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  background: #f1f3f5;
+  color: #495057;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 3em;
+  margin: 0;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 2.5em;
+  margin: 0;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 2em;
+  margin: 0;
+}
+
+h4 {
+  font-weight: 700;
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  margin: 1em;
+}
+

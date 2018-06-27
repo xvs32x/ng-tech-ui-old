@@ -3,29 +3,37 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <!--The content below is only a placeholder and can be replaced.-->
-    <div style="text-align:center">
-      <h1>
-        Welcome to {{title}}!
-      </h1>
-      <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+    <div class="row">
+      <app-tech-card *ngFor="let card of cards; let i = index" class="col">
+        <app-tech-card-header>
+          <h3>{{card.header}} {{i + 1}}</h3>
+        </app-tech-card-header>
+        <app-tech-card-body>
+          {{card.text}}
+        </app-tech-card-body>
+        <app-tech-card-footer>
+          <app-tech-button>Primary action</app-tech-button>
+          <app-tech-button appTechButtonOutline style="margin-left: 0.33em;">Cancel</app-tech-button>
+        </app-tech-card-footer>
+      </app-tech-card>
     </div>
-    <h2>Here are some links to help you start: </h2>
-    <ul>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-      </li>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-      </li>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-      </li>
-    </ul>
-    
+    <div class="row">
+      <app-tech-card class="col" style="width: 100%">
+        <app-tech-card-body>
+          <div class="row">
+            <div class="col" style="width: 50%; text-align: right;"><app-tech-input-label>Text input:</app-tech-input-label></div>
+            <div class="col" style="width: 50%"><app-tech-input-text></app-tech-input-text></div>
+          </div>
+        </app-tech-card-body>
+      </app-tech-card>
+    </div>
   `,
   styles: []
 })
 export class AppComponent {
-  title = 'app';
+  card = {
+    header: 'Title',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+  };
+  cards = [this.card, this.card, this.card];
 }
