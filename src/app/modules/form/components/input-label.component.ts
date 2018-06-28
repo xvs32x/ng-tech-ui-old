@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tech-input-label',
@@ -10,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
   styles: [
     ':host { display: block; }',
     ':host label { line-height: 2.8em; }'
-  ]
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputLabelComponent implements OnInit {
   constructor() {

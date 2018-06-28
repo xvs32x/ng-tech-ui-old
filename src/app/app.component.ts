@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Subject } from 'rxjs';
+import { SwitchValueI } from './modules/form/interfaces/switch-value';
 
 @Component({
   selector: 'app-root',
@@ -22,15 +24,21 @@ import { Component } from '@angular/core';
         <app-tech-card-body>
           <!--States toggle-->
           <div class="row" style="max-width: 1024px;">
-            <div class="col" style="width: 40%; text-align: right;"><app-tech-input-label>Input states:</app-tech-input-label></div>
+            <div class="col" style="width: 40%; text-align: right;">
+              <app-tech-input-label>Input states:</app-tech-input-label>
+            </div>
             <div class="col" style="width: 60%">
-              <app-tech-input-switch [states]="inputStates"></app-tech-input-switch>
+              <app-tech-input-switch [values]="inputStates" (OnChange)="onInputTextStateChange($event)"></app-tech-input-switch>
             </div>
           </div>
           <!--Text input-->
           <div class="row" style="max-width: 1024px;">
-            <div class="col" style="width: 40%; text-align: right;"><app-tech-input-label>Text input:</app-tech-input-label></div>
-            <div class="col" style="width: 60%"><app-tech-input-text></app-tech-input-text></div>
+            <div class="col" style="width: 40%; text-align: right;">
+              <app-tech-input-label>Text input:</app-tech-input-label>
+            </div>
+            <div class="col" style="width: 60%">
+              <app-tech-input-text placeholder="Some placeholder..." [state]="inputTextState"></app-tech-input-text>
+            </div>
           </div>
         </app-tech-card-body>
       </app-tech-card>
@@ -44,9 +52,16 @@ export class AppComponent {
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
   };
   cards = [this.card, this.card, this.card];
+  inputTextState = 'default';
   inputStates = [
     {name: 'Default', value: true},
+    {name: 'Focused', value: false},
     {name: 'Success', value: false},
     {name: 'Error', value: false},
   ];
+
+  onInputTextStateChange(state) {
+    this.inputTextState = state.name.toLowerCase();
+  }
+
 }
