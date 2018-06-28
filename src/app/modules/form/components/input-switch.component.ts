@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSquare as faSquareRegular} from '@fortawesome/free-solid-svg-icons';
+import { faSquare } from '@fortawesome/free-regular-svg-icons';
 import {
   trigger,
   state,
@@ -16,8 +17,8 @@ import { SwitchValueI } from '../interfaces/switch-value';
       *ngFor="let state of values" class="switch-panel-item" (click)="setActive(state)"
       [ngClass]="{active: state.value}" [ngStyle]="{cursor: state.value ? 'default' : 'pointer'}"
       [@switchState]="state.value ? 'active' : 'inactive'">
-        <fa-icon [icon]="state.value ? faCheck : faTimes"></fa-icon>
-        {{state.name}}
+      <fa-icon [icon]="state.value ? yes : no"></fa-icon>
+      {{state.name}}
     </button>
   `,
   styles: [
@@ -33,7 +34,7 @@ import { SwitchValueI } from '../interfaces/switch-value';
         top: '-3px'
 
       })),
-      state('active',   style({
+      state('active', style({
         background: '#f1f3f5',
         color: '#333',
         boxShadow: ' inset 0.2em 0.2em #d8dadc',
@@ -47,8 +48,8 @@ import { SwitchValueI } from '../interfaces/switch-value';
 export class InputSwitchComponent implements OnInit {
   @Input() values: SwitchValueI[] = [];
   @Output() OnChange: EventEmitter<SwitchValueI> = new EventEmitter<SwitchValueI>();
-  public faCheck = faCheckCircle;
-  public faTimes = faTimesCircle;
+  public yes = faSquareRegular;
+  public no = faSquare;
 
   constructor() {
   }
