@@ -31,14 +31,12 @@ import { SwitchValueI } from '../interfaces/switch-value';
         background: 'transparent',
         boxShadow: '0.2em 0.2em #d8dadc',
         color: '#999',
-        top: '-3px'
 
       })),
       state('active', style({
         background: '#f1f3f5',
         color: '#333',
         boxShadow: ' inset 0.2em 0.2em #d8dadc',
-        top: '0px'
       })),
       transition('* => active', animate('300ms ease-out')),
     ])
