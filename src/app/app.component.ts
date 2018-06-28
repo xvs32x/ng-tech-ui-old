@@ -47,6 +47,6 @@ export class AppComponent {
   inputStates = [
     {name: 'Default', value: true},
     {name: 'Success', value: false},
-    {name: 'Error', value: false}
+    {name: 'Error', value: false},
   ];
 }

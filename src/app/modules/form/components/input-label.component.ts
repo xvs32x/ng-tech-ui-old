@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   `,
   styles: [
     ':host { display: block; }',
-    ':host label { line-height: 2.6em; }'
+    ':host label { line-height: 2.8em; }'
   ]
 })
 export class InputLabelComponent implements OnInit {
