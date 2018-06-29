@@ -16,7 +16,7 @@ import {
   `,
   styles: [
     ':host { display: inline-block; }',
-    ':host button { border: 0; cursor: pointer; line-height: 1em; padding: 0.9em; outline: none; font-weight: bold; }',
+    ':host button { border: 0; cursor: pointer; line-height: 1em; padding: 1em; outline: none; font-weight: bold; }',
   ],
   animations: [
     trigger('switchState', [
@@ -101,6 +101,7 @@ export class ButtonComponent implements OnInit {
 
   onBlur($event) {
     switch (this.state) {
+      case 'primary':
       case 'focused-primary':
         this.state = 'primary';
         break;
