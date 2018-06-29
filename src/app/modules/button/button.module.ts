@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { ButtonComponent } from './components/button.component';
-import { ButtonOutlineDirective } from './direcitves/button-outline.directive';
+import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
-  imports: [],
+  imports: [
+    BrowserModule,
+    RouterModule
+  ],
   exports: [
     ButtonComponent,
-    ButtonOutlineDirective
   ],
   declarations: [
     ButtonComponent,
-    ButtonOutlineDirective
   ],
   providers: [],
 })

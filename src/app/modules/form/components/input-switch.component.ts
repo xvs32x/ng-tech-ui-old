@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { faSquare as faSquareRegular} from '@fortawesome/free-solid-svg-icons';
+import { faSquare as faSquareRegular } from '@fortawesome/free-solid-svg-icons';
 import { faSquare } from '@fortawesome/free-regular-svg-icons';
 import {
   trigger,
   state,
   style,
   animate,
-  transition
+  transition, group
 } from '@angular/animations';
 import { SwitchValueI } from '../interfaces/switch-value';
 
@@ -14,8 +14,7 @@ import { SwitchValueI } from '../interfaces/switch-value';
   selector: 'app-tech-input-switch',
   template: `
     <button
-      *ngFor="let state of values" class="switch-panel-item" (click)="setActive(state)"
-      [ngClass]="{active: state.value}" [ngStyle]="{cursor: state.value ? 'default' : 'pointer'}"
+      *ngFor="let state of values" (click)="setActive(state)"
       [@switchState]="state.value ? 'active' : 'inactive'">
       <fa-icon [icon]="state.value ? yes : no"></fa-icon>
       {{state.name}}
@@ -23,7 +22,7 @@ import { SwitchValueI } from '../interfaces/switch-value';
   `,
   styles: [
     ':host { display: inline-block; }',
-    ':host button {position: relative; border: 0; cursor: pointer; line-height: 1em; padding: 0.9em; outline: none; font-weight: bold;}',
+    ':host button { background: #ccc; border: 0; line-height: 1em; padding: 0.9em; outline: none; font-weight: bold; }',
   ],
   animations: [
     trigger('switchState', [
@@ -31,14 +30,23 @@ import { SwitchValueI } from '../interfaces/switch-value';
         background: 'transparent',
         boxShadow: '0.2em 0.2em #d8dadc',
         color: '#999',
-
+        cursor: 'pointer'
       })),
       state('active', style({
         background: '#f1f3f5',
-        color: '#333',
-        boxShadow: ' inset 0.2em 0.2em #d8dadc',
+        color: '#495057',
+        boxShadow: 'inset 0.2em 0.2em #d8dadc',
       })),
-      transition('* => active', animate('300ms ease-out')),
+      transition('* => active',  group([
+        animate('1ms ease-out', style({
+          background: '#CCC',
+          color: '#495057',
+          boxShadow: ' inset 0.2em 0.2em #d8dadc',
+        })),
+        animate('300ms ease-out', style({
+          background: '#f1f3f5',
+        })),
+      ])),
     ])
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
