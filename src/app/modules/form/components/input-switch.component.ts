@@ -22,7 +22,7 @@ import { SwitchValueI } from '../interfaces/switch-value';
   `,
   styles: [
     ':host { display: inline-block; }',
-    ':host button { background: #ccc; border: 0; line-height: 1em; padding: 0.9em; outline: none; font-weight: bold; }',
+    ':host button { background: #ccc; border: 0; line-height: 1em; padding: 1em; outline: none; font-weight: bold; }',
   ],
   animations: [
     trigger('switchState', [
