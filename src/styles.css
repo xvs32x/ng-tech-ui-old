@@ -30,12 +30,3 @@ h4 {
   margin: 0;
 }
 
-.row {
-  display: flex;
-  flex-direction: row;
-}
-
-.col {
-  margin: 1em;
-}
-
