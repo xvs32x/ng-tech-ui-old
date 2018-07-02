@@ -9,6 +9,7 @@ import { FormModule } from './modules/form/form.module';
 import { CardDemoComponent } from './components/card-demo';
 import { FormDemoComponent } from './components/form-demo';
 import { RouterModule } from '@angular/router';
+import { FlexLayoutModule, ResponsiveActivation } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     RouterModule.forRoot([]),
+    FlexLayoutModule,
     FontAwesomeModule,
     CardModule,
     ButtonModule,

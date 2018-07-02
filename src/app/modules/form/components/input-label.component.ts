@@ -8,7 +8,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
     </label>
   `,
   styles: [
-    ':host { display: block; }',
+    // ':host { display: block; }',
     ':host label { line-height: 2.8em; }'
   ],
   changeDetection: ChangeDetectionStrategy.OnPush

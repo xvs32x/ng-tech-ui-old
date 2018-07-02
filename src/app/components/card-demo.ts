@@ -3,13 +3,15 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-card-demo',
   template: `
-    <!--<div class="row">-->
-      <!--<div class="col">-->
-        <!--<h2>Cards</h2>-->
-      <!--</div>-->
-    <!--</div>-->
-    <div class="row">
-      <app-tech-card *ngFor="let card of cards; let i = index" class="col">
+    <div [fxLayout]="'row wrap'">
+      <app-tech-card
+        *ngFor="let card of cards; let i = index"
+        [fxFlex.xs]="'100%'"
+        [fxFlex.sm]="'calc(50%-2em)'"
+        [fxFlex.md]="'calc(33%-2em)'"
+        [fxFlex.lg]="'calc(25%-2em)'"
+        style="margin: 1em;"
+      >
         <app-tech-card-header>
           <h3>{{card.header}} {{i + 1}}</h3>
         </app-tech-card-header>
@@ -21,8 +23,7 @@ import { Component, OnInit } from '@angular/core';
           <app-tech-button style="margin-left: 0.33em;">Cancel</app-tech-button>
         </app-tech-card-footer>
       </app-tech-card>
-    </div>
-  `
+    </div>`
 })
 export class CardDemoComponent implements OnInit {
   card = {
@@ -34,7 +35,7 @@ export class CardDemoComponent implements OnInit {
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
     `,
   };
-  cards = [this.card, this.card, this.card];
+  cards = [this.card, this.card, this.card, this.card, this.card, this.card];
 
   constructor() {
   }
