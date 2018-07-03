@@ -13,16 +13,32 @@ import { SwitchValueI } from '../interfaces/switch-value';
 @Component({
   selector: 'app-tech-input-switch',
   template: `
-    <button
-      *ngFor="let state of values" (click)="setActive(state)"
-      [@switchState]="state.value ? 'active' : 'inactive'">
-      <fa-icon [icon]="state.value ? yes : no"></fa-icon>
-      {{state.name}}
-    </button>
+    <div *ngIf="!isCompact">
+      <button
+        *ngFor="let item of items" (click)="setActive(item)"
+        [@switchState]="item.value ? 'active' : 'inactive'">
+        <fa-icon [icon]="item.value ? yes : no"></fa-icon>
+        {{item.label ? item.label : item.name}}
+      </button>
+    </div>
+    <div *ngIf="isCompact && !isMultiple">
+      <div *ngFor="let item of items">
+        <label>
+          <input
+            type="radio"
+            name="model"
+            [value]="item.name"
+            [(ngModel)]="value"
+            (change)="setActive(item)">
+          {{item.label ? item.label : item.name}}
+        </label>
+      </div>
+    </div>
   `,
   styles: [
     ':host { display: inline-block; }',
     ':host button { background: #ccc; border: 0; line-height: 1em; padding: 1em; outline: none; font-weight: bold; }',
+    ':host input[type="radio"] { margin: .66em 0; }'
   ],
   animations: [
     trigger('switchState', [
@@ -52,7 +68,10 @@ import { SwitchValueI } from '../interfaces/switch-value';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputSwitchComponent implements OnInit {
-  @Input() values: SwitchValueI[] = [];
+  @Input() items: SwitchValueI[] = [];
+  @Input() value: string = null;
+  @Input() isMultiple: false;
+  @Input() isCompact = false;
   @Output() OnChange: EventEmitter<SwitchValueI> = new EventEmitter<SwitchValueI>();
   public yes = faSquareRegular;
   public no = faSquare;
@@ -64,8 +83,8 @@ export class InputSwitchComponent implements OnInit {
   }
 
   setActive(item: { name: string; value: boolean }): void {
-    this.values = this.values.map(x => x.name === item.name ? ({...x, value: true}) : ({...x, value: false}));
-    this.OnChange.next(item);
+    // this.values = this.values.map(x => x.name === item.name ? ({...x, value: true}) : ({...x, value: false}));
+    // this.OnChange.next(item);
   }
 
 }

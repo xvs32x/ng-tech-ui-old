@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tech-input-label',
@@ -8,15 +8,20 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
     </label>
   `,
   styles: [
-    // ':host { display: block; }',
-    ':host label { line-height: 2.8em; }'
+    ':host label { display: inline-block; font-size: 1.1em; padding: 1em; }',
+    ':host.isCompact label { padding-bottom: 0 } '
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputLabelComponent implements OnInit {
+  @Input()
+  @HostBinding('class.isCompact')
+  isCompact = false;
+
   constructor() {
   }
 
   ngOnInit() {
   }
+
 }
