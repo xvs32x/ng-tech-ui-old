@@ -37,9 +37,10 @@ import { SwitchValueI } from '../interfaces/switch-value';
   `,
   styles: [
     ':host { display: inline-block; }',
-    ':host button { font-size: inherit; background: #ccc; border: 0; line-height: .9em; padding: .9em; outline: none; font-weight: bold; }',
+    ':host button { font-size: .9em; background: #ccc; border: 0; line-height: 1em; padding: 1em; outline: none; font-weight: bold; }',
     ':host input[type="radio"] { margin: .66em 0; }',
-    ':host label { cursor: pointer; }'
+    ':host label { cursor: pointer; }',
+    ':host fa-icon { font-size: 0.9em;}'
   ],
   animations: [
     trigger('switchState', [
