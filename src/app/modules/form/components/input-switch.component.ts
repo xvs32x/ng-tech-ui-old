@@ -16,8 +16,8 @@ import { SwitchValueI } from '../interfaces/switch-value';
     <div *ngIf="!isCompact">
       <button
         *ngFor="let item of items" (click)="setActive(item)"
-        [@switchState]="item.value ? 'active' : 'inactive'">
-        <fa-icon [icon]="item.value ? yes : no"></fa-icon>
+        [@switchState]="item.name === value ? 'active' : 'inactive'">
+        <fa-icon [icon]="item.name === value ? yes : no"></fa-icon>
         {{item.label ? item.label : item.name}}
       </button>
     </div>
@@ -37,8 +37,9 @@ import { SwitchValueI } from '../interfaces/switch-value';
   `,
   styles: [
     ':host { display: inline-block; }',
-    ':host button { background: #ccc; border: 0; line-height: 1em; padding: 1em; outline: none; font-weight: bold; }',
-    ':host input[type="radio"] { margin: .66em 0; }'
+    ':host button { font-size: inherit; background: #ccc; border: 0; line-height: .9em; padding: .9em; outline: none; font-weight: bold; }',
+    ':host input[type="radio"] { margin: .66em 0; }',
+    ':host label { cursor: pointer; }'
   ],
   animations: [
     trigger('switchState', [
@@ -82,9 +83,9 @@ export class InputSwitchComponent implements OnInit {
   ngOnInit() {
   }
 
-  setActive(item: { name: string; value: boolean }): void {
-    // this.values = this.values.map(x => x.name === item.name ? ({...x, value: true}) : ({...x, value: false}));
-    // this.OnChange.next(item);
+  setActive(item: SwitchValueI): void {
+    this.value = item.name;
+    this.OnChange.next(item);
   }
 
 }

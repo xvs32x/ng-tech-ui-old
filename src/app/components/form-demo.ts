@@ -18,7 +18,7 @@ import { tap } from 'rxjs/internal/operators';
             </div>
             <div [fxFlex]="'calc(66%-1em)'" style="margin: 0 .5em; padding: .5em;">
               <app-tech-input-switch
-                 [items]="inputStates" [isCompact]="isMobile" (OnChange)="onInputTextStateChange($event)"
+                 [items]="inputStates" [isCompact]="isMobile" [value]="inputTextState" (OnChange)="onInputTextStateChange($event)"
               ></app-tech-input-switch>
             </div>
           </div>
@@ -40,10 +40,10 @@ import { tap } from 'rxjs/internal/operators';
 export class FormDemoComponent implements OnInit, OnDestroy {
   inputTextState = 'default';
   inputStates = [
-    {name: 'Default', value: true},
-    {name: 'Focused', value: false},
-    {name: 'Success', value: false},
-    {name: 'Error', value: false},
+    {name: 'default', label: 'Default'},
+    {name: 'focused', label: 'Focused'},
+    {name: 'success', label: 'Success'},
+    {name: 'error', label: 'Error'},
   ];
   isMobile = false;
   private subs: Subscription[] = [];

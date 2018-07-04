@@ -16,7 +16,7 @@ import {
   `,
   styles: [
     ':host { display: inline-block; }',
-    ':host button { border: 0; cursor: pointer; line-height: 1em; padding: 1em; outline: none; font-weight: bold; }',
+    ':host button { font-size: inherit; border: 0; cursor: pointer; line-height: .9em; padding: 1em; outline: none; font-weight: bold; }',
   ],
   animations: [
     trigger('switchState', [

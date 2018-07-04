@@ -1,5 +1,5 @@
 export interface SwitchValueI {
   name: string;
-  value: boolean;
+  value?: boolean;
   label?: string;
 }
