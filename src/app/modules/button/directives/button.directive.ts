@@ -1,19 +1,15 @@
-import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostListener, OnDestroy, OnInit, Output } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostListener, OnDestroy, OnInit, Output } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
+import { AnimationMetadata } from '@angular/animations/src/animation_metadata';
+import { map, skip, take } from 'rxjs/internal/operators';
 import { animate, AnimationBuilder, style } from '@angular/animations';
 import { TechVarsService } from '../../../services/tech-vars.service';
-import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
-import { map, skip, take, tap } from 'rxjs/internal/operators';
 import { TechVarsElStyleI } from '../../../interfaces/tech-vars';
-import { AnimationMetadata } from '@angular/animations/src/animation_metadata';
 
-@Component({
-  selector: 'app-tech-card',
-  template: `
-    <ng-content></ng-content>
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+@Directive({
+  selector: '[appTechButton]'
 })
-export class CardComponent implements OnInit, OnDestroy {
+export class ButtonDirective implements OnInit, OnDestroy {
   subs: Subscription[] = [];
   vars: Observable<TechVarsElStyleI>;
   @Output() OnMouseOver: EventEmitter<Event> = new EventEmitter<Event>();
@@ -21,7 +17,7 @@ export class CardComponent implements OnInit, OnDestroy {
   @Output() OnClick: EventEmitter<Event> = new EventEmitter<Event>();
 
   constructor(private animationBuilder: AnimationBuilder, private el: ElementRef, varsService: TechVarsService) {
-    this.vars = varsService.vars.pipe(map(x => x.card));
+    this.vars = varsService.vars.pipe(map(x => x.button));
     // Run first animation one time
     const s1 = this.vars.pipe(take(1))
       .subscribe((styles: TechVarsElStyleI) => {
@@ -80,5 +76,4 @@ export class CardComponent implements OnInit, OnDestroy {
     const player = animation.create(this.el.nativeElement);
     player.play();
   }
-
 }

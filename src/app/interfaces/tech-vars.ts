@@ -1,10 +1,18 @@
+export interface TechVarsStyleI {
+  [key: string]: string;
+}
+
 export interface TechVarsElStyleI {
-  initial?: { [key: string]: string };
-  default?: { [key: string]: string };
-  focused?: { [key: string]: string };
-  clicked?: { [key: string]: string };
+  initial?: TechVarsStyleI;
+  default?: TechVarsStyleI;
+  focused?: TechVarsStyleI;
+  clicked?: TechVarsStyleI;
 }
 
 export interface TechVarsI {
   card: TechVarsElStyleI;
+  cardHeader: TechVarsElStyleI;
+  cardBody: TechVarsElStyleI;
+  cardFooter: TechVarsElStyleI;
+  button: TechVarsElStyleI;
 }

@@ -19,8 +19,10 @@ import { Component, OnInit } from '@angular/core';
           {{card.text}}
         </app-tech-card-body>
         <app-tech-card-footer>
-          <app-tech-button state="primary">Primary action</app-tech-button>
-          <app-tech-button style="margin-left: 0.33em;">Cancel</app-tech-button>
+          <button appTechButton>Primary action</button>
+          <button appTechButton>Cancel</button>
+          <!--<app-tech-button state="primary">Primary action</app-tech-button>-->
+          <!--<app-tech-button style="margin-left: 0.33em;">Cancel</app-tech-button>-->
         </app-tech-card-footer>
       </app-tech-card>
     </div>`
