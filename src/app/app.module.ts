@@ -9,7 +9,8 @@ import { FormModule } from './modules/form/form.module';
 import { CardDemoComponent } from './components/card-demo';
 import { FormDemoComponent } from './components/form-demo';
 import { RouterModule } from '@angular/router';
-import { FlexLayoutModule, ResponsiveActivation } from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { TechVarsService } from './services/tech-vars.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { FlexLayoutModule, ResponsiveActivation } from '@angular/flex-layout';
     ButtonModule,
     FormModule
   ],
-  providers: [],
+  providers: [TechVarsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

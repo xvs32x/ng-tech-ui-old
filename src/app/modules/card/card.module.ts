@@ -3,10 +3,13 @@ import { CardComponent } from './components/card.components';
 import { CardHeaderComponent } from './components/card-header.component';
 import { CardBodyComponent } from './components/card-body.component';
 import { CardFooterComponent } from './components/card-footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
-  imports: [],
+  imports: [
+    BrowserAnimationsModule
+  ],
   exports: [
     CardComponent,
     CardHeaderComponent,

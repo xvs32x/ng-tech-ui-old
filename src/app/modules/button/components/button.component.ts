@@ -4,7 +4,7 @@ import {
   state,
   style,
   animate,
-  transition, keyframes, group
+  transition, group
 } from '@angular/animations';
 
 @Component({
@@ -30,17 +30,35 @@ import {
         boxShadow: '0.2em 0.2em #d8dadc',
         color: '#495057',
       })),
+      state('clicked', style({
+        background: '#f1f3f5',
+        color: '#495057',
+        boxShadow: ' inset 0.2em 0.2em #d8dadc',
+        // transform: 'scale(1)'
+      })),
+      state('clicked-primary', style({
+        background: '#f1f3f5',
+        color: '#495057',
+        boxShadow: ' inset 0.2em 0.2em #d8dadc',
+      })),
       state('focused', style({
-        background: '#f1f3f5',
-        color: '#495057',
-        boxShadow: ' inset 0.2em 0.2em #d8dadc',
+        background: 'transparent',
+        color: '#999',
+        boxShadow: ' 0.4em 0.4em #d8dadc',
+        // transform: 'scale(1.1)'
       })),
-      state('focused-primary', style({
-        background: '#f1f3f5',
-        color: '#495057',
-        boxShadow: ' inset 0.2em 0.2em #d8dadc',
-      })),
-      transition('* => focused',  group([
+      transition('* => clicked', group([
+        animate('1ms ease-out', style({
+          background: '#CCC',
+          color: '#495057',
+          boxShadow: ' inset 0.2em 0.2em #d8dadc',
+          // transform: 'scale(1)'
+        })),
+        animate('300ms ease-out', style({
+          background: '#f1f3f5',
+        })),
+      ])),
+      transition('* => clicked-primary', group([
         animate('1ms ease-out', style({
           background: '#CCC',
           color: '#495057',
@@ -50,14 +68,14 @@ import {
           background: '#f1f3f5',
         })),
       ])),
-      transition('* => focused-primary',  group([
+      transition('* => focused', group([
         animate('1ms ease-out', style({
-          background: '#CCC',
-          color: '#495057',
-          boxShadow: ' inset 0.2em 0.2em #d8dadc',
+          color: '#999',
+          // transform: 'scale(1.1)'
         })),
         animate('300ms ease-out', style({
-          background: '#f1f3f5',
+          background: 'transparent',
+          boxShadow: ' 0.4em 0.4em #d8dadc',
         })),
       ])),
     ])
@@ -79,6 +97,16 @@ export class ButtonComponent implements OnInit {
   }
 
   @HostListener('mouseover', ['$event']) onMouseOver($event) {
+    switch (this.state) {
+      case 'default':
+      case 'clicked':
+        this.state = 'focused';
+        break;
+      case 'primary':
+      case 'clicked-primary':
+        this.state = 'focused-primary';
+        break;
+    }
     this.OnMouseOver.next($event);
   }
 
@@ -89,11 +117,11 @@ export class ButtonComponent implements OnInit {
   onClick($event) {
     switch (this.state) {
       case 'primary':
-      case 'focused-primary':
-        this.state = 'focused-primary';
+      case 'clicked-primary':
+        this.state = 'clicked-primary';
         break;
       default:
-        this.state = 'focused';
+        this.state = 'clicked';
         break;
     }
     this.OnClick.next($event);
@@ -102,7 +130,7 @@ export class ButtonComponent implements OnInit {
   onBlur($event) {
     switch (this.state) {
       case 'primary':
-      case 'focused-primary':
+      case 'clicked-primary':
         this.state = 'primary';
         break;
       default:
