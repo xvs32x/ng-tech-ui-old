@@ -27,7 +27,7 @@ import {
   `,
   styles: [
     ':host { display: block; position: relative; }',
-    ':host input { line-height: 1em; padding: 0.9em; border: 0; width: calc(100% - 1.8em); outline: none; }',
+    ':host input { line-height: 1em; padding: .85em; border: 0; width: calc(100% - 1.7em); outline: none; }',
   ],
   animations: [
     trigger('switchState', [
