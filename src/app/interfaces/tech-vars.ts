@@ -3,10 +3,9 @@ export interface TechVarsStyleI {
 }
 
 export interface TechVarsElStyleI {
-  initial?: TechVarsStyleI;
-  default?: TechVarsStyleI;
-  focused?: TechVarsStyleI;
-  clicked?: TechVarsStyleI;
+  default: TechVarsStyleI;
+  focused: TechVarsStyleI;
+  clicked: TechVarsStyleI;
 }
 
 export interface TechVarsI {

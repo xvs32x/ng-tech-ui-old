@@ -111,14 +111,14 @@ export class ButtonComponent implements OnInit, OnDestroy {
   constructor(private animationBuilder: AnimationBuilder, private el: ElementRef, varsService: TechVarsService) {
     this.vars = varsService.vars.pipe(map(x => x.button));
     // Run first animation one time
-    const s1 = this.vars.pipe(take(1))
-      .subscribe((styles: TechVarsElStyleI) => {
-        this.runAnimation([
-          style(styles.initial),
-          animate(300, style(styles.default))
-        ]);
-      });
-    this.subs.push(s1);
+    // const s1 = this.vars.pipe(take(1))
+    //   .subscribe((styles: TechVarsElStyleI) => {
+    //     this.runAnimation([
+    //       style(styles.initial),
+    //       animate(300, style(styles.default))
+    //     ]);
+    //   });
+    // this.subs.push(s1);
     // Run other animations
     const s2 = this.vars.pipe(skip(1))
       .subscribe((styles: TechVarsElStyleI) => {

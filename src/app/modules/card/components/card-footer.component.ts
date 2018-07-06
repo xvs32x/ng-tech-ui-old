@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, OnDestroy, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, OnDestroy, OnInit, Output } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { AnimationMetadata } from '@angular/animations/src/animation_metadata';
 import { map, skip, take } from 'rxjs/internal/operators';
@@ -13,32 +13,15 @@ import { TechVarsElStyleI } from '../../../interfaces/tech-vars';
     ':host { display: block; }'
   ]
 })
-export class CardFooterComponent implements OnInit, OnDestroy {
+export class CardFooterComponent implements OnInit, OnDestroy, AfterViewInit {
   subs: Subscription[] = [];
   vars: Observable<TechVarsElStyleI>;
   @Output() OnMouseOver: EventEmitter<Event> = new EventEmitter<Event>();
-  @Output() OnMouseOut: EventEmitter<Event> = new EventEmitter<Event>();
+  @Output() OnMouseLeave: EventEmitter<Event> = new EventEmitter<Event>();
   @Output() OnClick: EventEmitter<Event> = new EventEmitter<Event>();
 
   constructor(private animationBuilder: AnimationBuilder, private el: ElementRef, varsService: TechVarsService) {
     this.vars = varsService.vars.pipe(map(x => x.cardFooter));
-    // Run first animation one time
-    const s1 = this.vars.pipe(take(1))
-      .subscribe((styles: TechVarsElStyleI) => {
-        this.runAnimation([
-          style(styles.initial),
-          animate(300, style({...styles.initial, ...styles.default}))
-        ]);
-      });
-    this.subs.push(s1);
-    // Run other animations
-    const s2 = this.vars.pipe(skip(1))
-      .subscribe((styles: TechVarsElStyleI) => {
-        this.runAnimation([
-          animate(300, style({...styles.initial, ...styles.default}))
-        ]);
-      });
-    this.subs.push(s2);
   }
 
   ngOnInit() {
@@ -46,6 +29,13 @@ export class CardFooterComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subs.forEach(s => s.unsubscribe());
+  }
+
+  ngAfterViewInit() {
+    const s1 = this.vars.subscribe((styles: TechVarsElStyleI) => {
+      this.setInitialStyles(styles);
+    });
+    this.subs.push(s1);
   }
 
   @HostListener('mouseover', ['$event']) onMouseOver(e) {
@@ -58,7 +48,7 @@ export class CardFooterComponent implements OnInit, OnDestroy {
   }
 
   @HostListener('mouseleave', ['$event']) onMouseLeave(e) {
-    this.OnMouseOut.next(e);
+    this.OnMouseLeave.next(e);
     this.vars.subscribe((styles: TechVarsElStyleI) => {
       this.runAnimation([
         animate(300, style(styles.default))
@@ -72,6 +62,12 @@ export class CardFooterComponent implements OnInit, OnDestroy {
       this.runAnimation([
         animate(300, style(styles.clicked))
       ]);
+    });
+  }
+
+  setInitialStyles(styles: TechVarsElStyleI) {
+    Object.keys(styles.default).forEach(k => {
+      this.el.nativeElement.style[k] = styles.default[k];
     });
   }
 

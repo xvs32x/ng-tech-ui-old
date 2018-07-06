@@ -6,32 +6,30 @@ import { TechVarsI } from '../interfaces/tech-vars';
 export class TechVarsService {
   public vars: BehaviorSubject<TechVarsI> = new BehaviorSubject<TechVarsI>({
     card: {
-      initial: {background: '#fff', boxShadow: '.1em .1em #d8dadc'},
-      default: {boxShadow: '.3em .3em #d8dadc'},
-      focused: {boxShadow: '.6em .6em #d8dadc'},
+      default: {background: '#fff', boxShadow: '.1em .1em #d8dadc'},
+      focused: {boxShadow: '.3em .3em #d8dadc'},
       clicked: {},
     },
     cardHeader: {
-      initial: {padding: '1em', borderBottom: '1px solid #e9ecef'},
-      default: {},
+      default: {padding: '1em', borderBottom: '1px solid #e9ecef'},
       focused: {},
       clicked: {},
     },
     cardBody: {
-      initial: {padding: '1em'},
-      default: {},
+      default: {padding: '1em'},
       focused: {},
       clicked: {},
     },
     cardFooter: {
-      initial: {padding: '1em', borderTop: '1px solid #e9ecef'},
-      default: {},
+      default: {padding: '1em', borderTop: '1px solid #e9ecef'},
       focused: {},
       clicked: {},
     },
     button: {
-      initial: {fontSize: '.9em', border: '0', cursor: 'pointer', 'lineHeight': '1em', padding: '1em', outline: 'none', fontWeight: 'bold'},
-      default: {},
+      default: {
+        fontSize: '.9em', border: '0px', cursor: 'pointer', lineHeight: '1em', padding: '1em', outline: 'none', fontWeight: 'bold',
+        background: '#fff'
+      },
       focused: {},
       clicked: {},
     }
