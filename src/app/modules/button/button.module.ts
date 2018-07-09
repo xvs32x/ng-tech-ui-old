@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { ButtonComponent } from './components/button.component';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { ButtonDirective } from './directives/button.directive';
+import { ButtonPrimaryDirective } from './directives/button-primary.directive';
 
 
 @NgModule({
@@ -11,12 +11,12 @@ import { ButtonDirective } from './directives/button.directive';
     RouterModule
   ],
   exports: [
-    ButtonComponent,
-    ButtonDirective
+    ButtonDirective,
+    ButtonPrimaryDirective
   ],
   declarations: [
-    ButtonComponent,
-    ButtonDirective
+    ButtonDirective,
+    ButtonPrimaryDirective
   ],
   providers: [],
 })

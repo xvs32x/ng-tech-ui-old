@@ -18,7 +18,7 @@ import {
 } from '@angular/animations';
 
 @Component({
-  selector: 'app-tech-input-text',
+  selector: 'app-tech-text',
   template: `
     <input
       [ngModel]="model" (ngModelChange)="onModelChange($event)"
@@ -48,7 +48,7 @@ import {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class InputTextComponent implements OnInit, OnChanges {
+export class TextComponent implements OnInit, OnChanges {
   @Input() state = 'default';
   @Input() placeholder = '';
   @Input() model = '';

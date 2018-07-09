@@ -1,15 +1,30 @@
-import { AfterViewInit, Directive, ElementRef, EventEmitter, HostListener, OnDestroy, OnInit, Output } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  OnDestroy,
+  OnInit,
+  Output
+} from '@angular/core';
 import { AnimationMetadata } from '@angular/animations/src/animation_metadata';
-import { map, skip, take } from 'rxjs/internal/operators';
 import { animate, AnimationBuilder, style } from '@angular/animations';
+import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/internal/operators';
 import { TechVarsService } from '../../../services/tech-vars.service';
 import { TechVarsElStyleI } from '../../../interfaces/tech-vars';
 
-@Directive({
-  selector: '[appTechButton]'
+@Component({
+  selector: 'app-tech-radio-component',
+  template: `
+    
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ButtonDirective implements OnInit, OnDestroy, AfterViewInit {
+
+export class RadioComponent implements OnInit, OnDestroy, AfterViewInit {
   subs: Subscription[] = [];
   vars: Observable<TechVarsElStyleI>;
   @Output() OnMouseOver: EventEmitter<Event> = new EventEmitter<Event>();
@@ -17,7 +32,7 @@ export class ButtonDirective implements OnInit, OnDestroy, AfterViewInit {
   @Output() OnClick: EventEmitter<Event> = new EventEmitter<Event>();
 
   constructor(private animationBuilder: AnimationBuilder, private el: ElementRef, varsService: TechVarsService) {
-    this.vars = varsService.vars.pipe(map(x => x.button));
+    this.vars = varsService.vars.pipe(map(x => x.radio));
   }
 
   ngOnInit() {
@@ -29,7 +44,7 @@ export class ButtonDirective implements OnInit, OnDestroy, AfterViewInit {
 
   ngAfterViewInit() {
     const s1 = this.vars.subscribe((styles: TechVarsElStyleI) => {
-        this.setInitialStyles(styles);
+      this.setInitialStyles(styles);
     });
     this.subs.push(s1);
   }
@@ -56,7 +71,7 @@ export class ButtonDirective implements OnInit, OnDestroy, AfterViewInit {
     this.OnClick.next(e);
     this.vars.subscribe((styles: TechVarsElStyleI) => {
       this.runAnimation([
-        animate(100, style(styles.clicked))
+        animate(300, style(styles.clicked))
       ]);
     });
   }

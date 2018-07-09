@@ -14,4 +14,7 @@ export interface TechVarsI {
   cardBody: TechVarsElStyleI;
   cardFooter: TechVarsElStyleI;
   button: TechVarsElStyleI;
+  buttonPrimary: TechVarsElStyleI;
+  inputSwitch: TechVarsElStyleI; // todo deprecated
+  radio: TechVarsElStyleI;
 }

@@ -7,9 +7,9 @@ import { TechVarsService } from '../../../services/tech-vars.service';
 import { TechVarsElStyleI } from '../../../interfaces/tech-vars';
 
 @Directive({
-  selector: '[appTechButton]'
+  selector: '[appTechButtonPrimary]'
 })
-export class ButtonDirective implements OnInit, OnDestroy, AfterViewInit {
+export class ButtonPrimaryDirective implements OnInit, OnDestroy, AfterViewInit {
   subs: Subscription[] = [];
   vars: Observable<TechVarsElStyleI>;
   @Output() OnMouseOver: EventEmitter<Event> = new EventEmitter<Event>();
@@ -17,7 +17,7 @@ export class ButtonDirective implements OnInit, OnDestroy, AfterViewInit {
   @Output() OnClick: EventEmitter<Event> = new EventEmitter<Event>();
 
   constructor(private animationBuilder: AnimationBuilder, private el: ElementRef, varsService: TechVarsService) {
-    this.vars = varsService.vars.pipe(map(x => x.button));
+    this.vars = varsService.vars.pipe(map(x => x.buttonPrimary));
   }
 
   ngOnInit() {
@@ -29,7 +29,7 @@ export class ButtonDirective implements OnInit, OnDestroy, AfterViewInit {
 
   ngAfterViewInit() {
     const s1 = this.vars.subscribe((styles: TechVarsElStyleI) => {
-        this.setInitialStyles(styles);
+      this.setInitialStyles(styles);
     });
     this.subs.push(s1);
   }

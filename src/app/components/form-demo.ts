@@ -14,22 +14,20 @@ import { tap } from 'rxjs/internal/operators';
             <div
               [fxFlex]="'calc(33%-1em)'"
               style="text-align: right;" [ngStyle.xs]="{'text-align': 'left'}">
-              <app-tech-input-label [isCompact]="isMobile">Input states:</app-tech-input-label>
+              <app-tech-label [isCompact]="isMobile">Input states:</app-tech-label>
             </div>
             <div [fxFlex]="'calc(66%-1em)'" style="margin: 0 .5em; padding: .5em;">
-              <app-tech-input-switch
-                 [items]="inputStates" [isCompact]="isMobile" [value]="inputTextState" (OnChange)="onInputTextStateChange($event)"
-              ></app-tech-input-switch>
+              <app-tech-radio-component></app-tech-radio-component>
             </div>
           </div>
           <!--Text input-->
           <div [fxLayout]="'row wrap'" [fxLayout.xs]="'column'">
             <div [fxFlex]="'calc(33%-1em)'"
                  style="text-align: right;" [ngStyle.xs]="{'text-align': 'left'}">
-              <app-tech-input-label [isCompact]="isMobile">Text input:</app-tech-input-label>
+              <app-tech-label [isCompact]="isMobile">Text input:</app-tech-label>
             </div>
             <div [fxFlex]="'calc(66%-1em)'" style="margin: 0 .5em; padding: .5em;">
-              <app-tech-input-text placeholder="Some placeholder..." [state]="inputTextState"></app-tech-input-text>
+              <app-tech-text placeholder="Some placeholder..." [state]="inputTextState"></app-tech-text>
             </div>
           </div>
         </app-tech-card-body>

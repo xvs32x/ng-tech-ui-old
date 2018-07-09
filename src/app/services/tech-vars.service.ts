@@ -6,8 +6,8 @@ import { TechVarsI } from '../interfaces/tech-vars';
 export class TechVarsService {
   public vars: BehaviorSubject<TechVarsI> = new BehaviorSubject<TechVarsI>({
     card: {
-      default: {background: '#fff', boxShadow: '.1em .1em #d8dadc'},
-      focused: {boxShadow: '.3em .3em #d8dadc'},
+      default: {background: '#fff', borderRadius: '.3em', boxShadow: '0 0 1em #d8dfed'},
+      focused: {},
       clicked: {},
     },
     cardHeader: {
@@ -27,12 +27,33 @@ export class TechVarsService {
     },
     button: {
       default: {
-        fontSize: '.9em', border: '0px', cursor: 'pointer', lineHeight: '1em', padding: '1em', outline: 'none', fontWeight: 'bold',
-        background: '#fff'
+        fontSize: '.9em', cursor: 'pointer', lineHeight: '1em', padding: '1em', outline: 'none', fontWeight: 'bold',
+        background: '#f8f9fa', color: '#212529', border: 'none', borderRadius: '.3em', boxShadow: 'none'
       },
+      focused: {background: '#e2e6ea'},
+      clicked: {boxShadow: '0 0 0 0.2rem rgba(6,101,208,.5)'},
+    },
+    buttonPrimary: {
+      default: {
+        fontSize: '.9em', cursor: 'pointer', lineHeight: '1em', padding: '1em', outline: 'none', fontWeight: 'bold',
+        background: '#2460CC', color: '#fff', border: 'none', borderRadius: '.3em', boxShadow: 'none'
+      },
+      focused: {background: '#253b92'},
+      clicked: {boxShadow: '0 0 0 0.2rem rgba(6, 101, 208, .5)'},
+    },
+    inputSwitch: {
+      default: {},
       focused: {},
       clicked: {},
-    }
+    },
+    radio: {
+      default: {
+        display: 'inline-block', background: 'transparent', width: '1.33em', height: '1.33em', border: '1px solid #2460CC',
+        borderRadius: '1.33em', boxShadow: 'none'
+      },
+      focused: {border: '1px solid #253b92'},
+      clicked: {boxShadow: '0 0 0 0.2rem rgba(6, 101, 208, .5)'},
+    },
   });
 
   constructor() {

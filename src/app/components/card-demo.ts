@@ -13,16 +13,14 @@ import { Component, OnInit } from '@angular/core';
         style="margin: 1em;"
       >
         <app-tech-card-header>
-          <h3>{{card.header}} {{i + 1}}</h3>
+          <h4>{{card.header}} {{i + 1}}</h4>
         </app-tech-card-header>
         <app-tech-card-body>
           {{card.text}}
         </app-tech-card-body>
         <app-tech-card-footer>
-          <button appTechButton>Primary action</button>
-          <button appTechButton>Cancel</button>
-          <!--<app-tech-button state="primary">Primary action</app-tech-button>-->
-          <!--<app-tech-button style="margin-left: 0.33em;">Cancel</app-tech-button>-->
+          <button appTechButtonPrimary>Primary action</button>
+          <button appTechButton style="margin-left: .5em;">Cancel</button>
         </app-tech-card-footer>
       </app-tech-card>
     </div>`

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { InputTextComponent } from './components/input-text.component';
-import { InputLabelComponent } from './components/input-label.component';
-import { InputSwitchComponent } from './components/input-switch.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { TextComponent } from './components/text.component';
+import { LabelComponent } from './components/label.component';
+import { RadioComponent } from './components/radio.components';
 
 @NgModule({
   imports: [
@@ -15,14 +15,14 @@ import { FormsModule } from '@angular/forms';
     FontAwesomeModule,
   ],
   exports: [
-    InputTextComponent,
-    InputLabelComponent,
-    InputSwitchComponent
+    TextComponent,
+    LabelComponent,
+    RadioComponent
   ],
   declarations: [
-    InputTextComponent,
-    InputLabelComponent,
-    InputSwitchComponent
+    TextComponent,
+    LabelComponent,
+    RadioComponent
   ],
   providers: [],
 })

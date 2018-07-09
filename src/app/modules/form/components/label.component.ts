@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-tech-input-label',
+  selector: 'app-tech-label',
   template: `
     <label>
       <ng-content></ng-content>
@@ -13,7 +13,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class InputLabelComponent implements OnInit {
+export class LabelComponent implements OnInit {
   @Input()
   @HostBinding('class.isCompact')
   isCompact = false;
