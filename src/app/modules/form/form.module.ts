@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { TextComponent } from './components/text.component';
 import { LabelComponent } from './components/label.component';
 import { RadioComponent } from './components/radio.components';
+import { RadioLabelDirective } from './directives/radio-label.directive';
 
 @NgModule({
   imports: [
@@ -17,12 +18,14 @@ import { RadioComponent } from './components/radio.components';
   exports: [
     TextComponent,
     LabelComponent,
-    RadioComponent
+    RadioComponent,
+    RadioLabelDirective
   ],
   declarations: [
     TextComponent,
     LabelComponent,
-    RadioComponent
+    RadioComponent,
+    RadioLabelDirective
   ],
   providers: [],
 })

@@ -17,7 +17,7 @@ import { tap } from 'rxjs/internal/operators';
               <app-tech-label [isCompact]="isMobile">Input states:</app-tech-label>
             </div>
             <div [fxFlex]="'calc(66%-1em)'" style="margin: 0 .5em; padding: .5em;">
-              <app-tech-radio-component></app-tech-radio-component>
+              <app-tech-radio-component>Default state</app-tech-radio-component>
             </div>
           </div>
           <!--Text input-->
