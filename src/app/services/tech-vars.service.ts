@@ -81,24 +81,24 @@ export class TechVarsService {
     },
     radio: {
       default: {
-        display: 'inline-block',
+        display: 'block',
         background: '#F4F6FA',
-        width: '1.33em',
-        height: '1.33em',
+        width: '1.11em',
+        height: '1.11em',
         border: '1px solid #F4F6FA',
-        borderRadius: '1.33em',
+        borderRadius: '1.11em',
         boxShadow: 'none',
         padding: '0',
-        margin: '.66em 0 .85em 0'
+        margin: '.85em 0 .85em 0'
       },
       focused: {
         background: '#e6ebf4',
         border: '1px solid #e6ebf4'
       },
       clicked: {
-        boxShadow: '0 0 0 0.1rem rgba(6, 101, 208, .5)',
+        boxShadow: '0 0 0 0.1em rgba(6, 101, 208, .5)',
         background: 'rgb(36, 96, 204)',
-        border: '1px solid rgba(255, 255, 255, .7)'
+        border: '1px solid rgba(255, 255, 255, .8)'
       },
     },
     radioLabel: {
@@ -109,11 +109,27 @@ export class TechVarsService {
         outline: 'none',
         color: '#585858',
         whiteSpace: 'nowrap',
-        paddingLeft: '2em'
+        paddingLeft: '1.66em',
+        marginTop: '-.1em',
       },
       focused: {},
       clicked: {},
     },
+    inputText: {
+      default: {
+        lineHeight: '1em',
+        padding: '.85em',
+        border: 'none',
+        width: 'calc(100% - 1.7em)',
+        outline: 'none',
+        background: '#F4F6FA',
+        borderRadius: '.3em',
+      },
+      focused: {},
+      clicked: {
+        background: '#E7EBF4'
+      },
+    }
   });
 
   constructor() {

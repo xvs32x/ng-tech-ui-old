@@ -17,17 +17,30 @@ import { tap } from 'rxjs/internal/operators';
               <app-tech-label [isCompact]="isMobile">Input states:</app-tech-label>
             </div>
             <div [fxFlex]="'calc(66%-1em)'" style="margin: 0 .5em; padding: .5em;">
-              <app-tech-radio-component>Default state</app-tech-radio-component>
+              <app-tech-radio-component *ngFor="let item of inputStates"
+                                        [model]="inputTextState" [name]="item.name" (OnModelChange)="onInputTextStateChange($event)">
+                {{item.label}}
+              </app-tech-radio-component>
             </div>
           </div>
-          <!--Text input-->
+          <!--Text input directive-->
           <div [fxLayout]="'row wrap'" [fxLayout.xs]="'column'">
             <div [fxFlex]="'calc(33%-1em)'"
                  style="text-align: right;" [ngStyle.xs]="{'text-align': 'left'}">
-              <app-tech-label [isCompact]="isMobile">Text input:</app-tech-label>
+              <app-tech-label [isCompact]="isMobile">Input text directive:</app-tech-label>
             </div>
             <div [fxFlex]="'calc(66%-1em)'" style="margin: 0 .5em; padding: .5em;">
-              <app-tech-text placeholder="Some placeholder..." [state]="inputTextState"></app-tech-text>
+              <input placeholder="Styled input directive without html template..." type="text" appTechInputText>
+            </div>
+          </div>
+          <!--Text input component-->
+          <div [fxLayout]="'row wrap'" [fxLayout.xs]="'column'">
+            <div [fxFlex]="'calc(33%-1em)'"
+                 style="text-align: right;" [ngStyle.xs]="{'text-align': 'left'}">
+              <app-tech-label [isCompact]="isMobile">Input text component:</app-tech-label>
+            </div>
+            <div [fxFlex]="'calc(66%-1em)'" style="margin: 0 .5em; padding: .5em;">
+              <app-tech-input-text [placeholder]="'Input component with validation states and errors template'"></app-tech-input-text>
             </div>
           </div>
         </app-tech-card-body>
@@ -40,8 +53,8 @@ export class FormDemoComponent implements OnInit, OnDestroy {
   inputStates = [
     {name: 'default', label: 'Default'},
     {name: 'focused', label: 'Focused'},
-    {name: 'success', label: 'Success'},
-    {name: 'error', label: 'Error'},
+    {name: 'validated', label: 'Validated'},
+    {name: 'invalidated', label: 'Invalidated'},
   ];
   isMobile = false;
   private subs: Subscription[] = [];
@@ -59,6 +72,6 @@ export class FormDemoComponent implements OnInit, OnDestroy {
   }
 
   onInputTextStateChange(state) {
-    this.inputTextState = state.name.toLowerCase();
+    this.inputTextState = state;
   }
 }

@@ -14,10 +14,6 @@ export class RadioLabelDirective implements OnInit, OnDestroy, AfterViewInit {
   subs: Subscription[] = [];
   vars: Observable<TechVarsElStyleI>;
   state: string;
-  @Output() OnMouseOver: EventEmitter<Event> = new EventEmitter<Event>();
-  @Output() OnMouseLeave: EventEmitter<Event> = new EventEmitter<Event>();
-  @Output() OnClick: EventEmitter<Event> = new EventEmitter<Event>();
-  @Output() OnBlur: EventEmitter<Event> = new EventEmitter<Event>();
 
   constructor(private animationBuilder: AnimationBuilder, private el: ElementRef, varsService: TechVarsService) {
     this.vars = varsService.vars.pipe(map(x => x.radioLabel));

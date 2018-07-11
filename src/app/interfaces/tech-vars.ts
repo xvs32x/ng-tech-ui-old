@@ -6,6 +6,8 @@ export interface TechVarsElStyleI {
   default: TechVarsStyleI;
   focused: TechVarsStyleI;
   clicked: TechVarsStyleI;
+  validated?: TechVarsStyleI;
+  invalidated?: TechVarsStyleI;
 }
 
 export interface TechVarsI {
@@ -17,4 +19,5 @@ export interface TechVarsI {
   buttonPrimary: TechVarsElStyleI;
   radio: TechVarsElStyleI;
   radioLabel: TechVarsElStyleI;
+  inputText: TechVarsElStyleI;
 }

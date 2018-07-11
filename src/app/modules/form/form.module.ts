@@ -7,6 +7,8 @@ import { TextComponent } from './components/text.component';
 import { LabelComponent } from './components/label.component';
 import { RadioComponent } from './components/radio.components';
 import { RadioLabelDirective } from './directives/radio-label.directive';
+import { InputTextDirective } from './directives/input-text.directive';
+import { InputTextComponent } from './components/input-text.component';
 
 @NgModule({
   imports: [
@@ -19,13 +21,17 @@ import { RadioLabelDirective } from './directives/radio-label.directive';
     TextComponent,
     LabelComponent,
     RadioComponent,
-    RadioLabelDirective
+    RadioLabelDirective,
+    InputTextDirective,
+    InputTextComponent
   ],
   declarations: [
     TextComponent,
     LabelComponent,
     RadioComponent,
-    RadioLabelDirective
+    RadioLabelDirective,
+    InputTextDirective,
+    InputTextComponent
   ],
   providers: [],
 })
