@@ -7,6 +7,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '
       <ng-content></ng-content>
     </label>
   `,
+  // todo remove this styles
   styles: [
     ':host label { display: inline-block; font-size: 1.1em; padding: 1em; }',
     ':host.isCompact label { padding-bottom: 0 } '

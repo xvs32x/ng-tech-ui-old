@@ -4,8 +4,9 @@ export interface TechVarsStyleI {
 
 export interface TechVarsElStyleI {
   default: TechVarsStyleI;
-  focused: TechVarsStyleI;
   clicked: TechVarsStyleI;
+  focused: TechVarsStyleI;
+  disabled?: TechVarsStyleI;
   validated?: TechVarsStyleI;
   invalidated?: TechVarsStyleI;
 }

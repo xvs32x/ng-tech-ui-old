@@ -117,18 +117,32 @@ export class TechVarsService {
     },
     inputText: {
       default: {
-        lineHeight: '1em',
-        padding: '.85em',
-        border: 'none',
+        padding: '.65em',
+        border: '1px solid #F4F6FA',
         width: 'calc(100% - 1.7em)',
         outline: 'none',
         background: '#F4F6FA',
         borderRadius: '.3em',
+        cursor: 'default'
       },
       focused: {},
       clicked: {
-        background: '#E7EBF4'
+        background: '#E7EBF4',
+        border: '1px solid #E7EBF4',
       },
+      validated: {
+        background: '#E4F0D9',
+        border: '1px solid #E4F0D9'
+      },
+      invalidated: {
+        background: '#FCF1ED',
+        border: '1px solid #FCF1ED'
+      },
+      disabled: {
+        background: '#E9ECEF',
+        border: '1px solid #d8dfed',
+        cursor: 'not-allowed'
+      }
     }
   });
 

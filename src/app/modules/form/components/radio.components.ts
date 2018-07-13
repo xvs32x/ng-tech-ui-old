@@ -103,7 +103,10 @@ export class RadioComponent implements OnInit, OnDestroy, OnChanges {
     this.state = state;
     const s = this.vars.subscribe((styles: TechVarsElStyleI) => {
       this.runAnimation([
-        animate(timings, style(styles[state]))
+        animate(timings, style({
+          ...styles[STATE_DEFAULT],
+          ...styles[state]
+        }))
       ]);
     });
     this.subs.push(s);

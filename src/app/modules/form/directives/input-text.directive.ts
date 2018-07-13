@@ -1,5 +1,12 @@
 import { AfterViewInit, Directive, ElementRef, EventEmitter, HostListener, OnChanges, OnDestroy, OnInit, Output } from '@angular/core';
-import { STATE_CLICKED, STATE_DEFAULT, STATE_FOCUSED } from '../../../constants/tech-state';
+import {
+  STATE_CLICKED,
+  STATE_DEFAULT,
+  STATE_DISABLED,
+  STATE_FOCUSED,
+  STATE_INVALIDATED,
+  STATE_VALIDATED
+} from '../../../constants/tech-state';
 import { Observable, Subscription } from 'rxjs';
 import { animate, AnimationBuilder, style } from '@angular/animations';
 import { TechVarsElStyleI } from '../../../interfaces/tech-vars';
@@ -10,7 +17,7 @@ import { AnimationMetadata } from '@angular/animations/src/animation_metadata';
 @Directive({
   selector: '[appTechInputText]',
 })
-export class InputTextDirective implements  OnInit, OnDestroy, AfterViewInit {
+export class InputTextDirective implements OnInit, OnDestroy, AfterViewInit {
   subs: Subscription[] = [];
   vars: Observable<TechVarsElStyleI>;
   state: string;
@@ -41,7 +48,7 @@ export class InputTextDirective implements  OnInit, OnDestroy, AfterViewInit {
   }
 
   @HostListener('mouseover', ['$event']) onMouseOver(e?) {
-    if (this.state === STATE_CLICKED) {
+    if (this.state === STATE_CLICKED || this.state === STATE_VALIDATED || this.state === STATE_INVALIDATED) {
       return;
     }
     if (e) {
@@ -85,10 +92,17 @@ export class InputTextDirective implements  OnInit, OnDestroy, AfterViewInit {
   }
 
   switchState(timings: number, state: string) {
+    this.el.nativeElement.disabled = state === STATE_DISABLED;
+    if (state === STATE_CLICKED) {
+      this.el.nativeElement.focus();
+    }
     this.state = state;
     const s = this.vars.subscribe((styles: TechVarsElStyleI) => {
       this.runAnimation([
-        animate(timings, style(styles[state]))
+        animate(timings, style({
+          ...styles[STATE_DEFAULT],
+          ...styles[state]
+        }))
       ]);
     });
     this.subs.push(s);

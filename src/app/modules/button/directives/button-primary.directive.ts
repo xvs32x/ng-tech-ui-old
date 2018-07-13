@@ -88,7 +88,10 @@ export class ButtonPrimaryDirective implements OnInit, OnDestroy, AfterViewInit 
     this.state = state;
     const s = this.vars.subscribe((styles: TechVarsElStyleI) => {
       this.runAnimation([
-        animate(timings, style(styles[state]))
+        animate(timings, style({
+          ...styles[STATE_DEFAULT],
+          ...styles[state]
+        }))
       ]);
     });
     this.subs.push(s);
