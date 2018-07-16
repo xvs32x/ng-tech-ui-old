@@ -21,4 +21,5 @@ export interface TechVarsI {
   radio: TechVarsElStyleI;
   radioLabel: TechVarsElStyleI;
   inputText: TechVarsElStyleI;
+  inputLabel: TechVarsElStyleI;
 }

@@ -143,7 +143,16 @@ export class TechVarsService {
         border: '1px solid #d8dfed',
         cursor: 'not-allowed'
       }
-    }
+    },
+    inputLabel: {
+      default: {
+        display: 'inline-block',
+        fontSize: '1.1em',
+        padding: '.9em 0 .2em 0'
+      },
+      focused: {},
+      clicked: {},
+    },
   });
 
   constructor() {

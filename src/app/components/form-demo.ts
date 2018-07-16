@@ -12,12 +12,11 @@ import { STATE_CLICKED, STATE_DEFAULT, STATE_DISABLED, STATE_INVALIDATED, STATE_
         <app-tech-card-body>
           <!--States toggle-->
           <div [fxLayout]="'row wrap'" [fxLayout.xs]="'column'">
-            <div
-              [fxFlex]="'calc(33%-1em)'"
-              style="text-align: right;" [ngStyle.xs]="{'text-align': 'left'}">
-              <app-tech-label [isCompact]="isMobile">Input states:</app-tech-label>
+            <div [fxFlex]="'calc(33%-1em)'"
+                 style="text-align: right;" [ngStyle.xs]="{'text-align': 'left'}">
+              <label appTechInputLabel>Switch with label:</label>
             </div>
-            <div [fxFlex]="'calc(66%-1em)'" style="padding: .5em;" [ngStyle.gt-xs]="{margin: '0 .5em'}">
+            <div [fxFlex]="'calc(66%-1em)'" [ngStyle.gt-xs]="{margin: '0 .5em', padding: '.5em'}">
               <app-tech-radio-component *ngFor="let item of inputStates"
                                         [model]="inputTextState" [name]="item.name" (OnModelChange)="onInputTextStateChange($event)">
                 {{item.label}}
@@ -28,9 +27,9 @@ import { STATE_CLICKED, STATE_DEFAULT, STATE_DISABLED, STATE_INVALIDATED, STATE_
           <div [fxLayout]="'row wrap'" [fxLayout.xs]="'column'">
             <div [fxFlex]="'calc(33%-1em)'"
                  style="text-align: right;" [ngStyle.xs]="{'text-align': 'left'}">
-              <app-tech-label [isCompact]="isMobile">Input text directive:</app-tech-label>
+              <label appTechInputLabel>Input text directive:</label>
             </div>
-            <div [fxFlex]="'calc(66%-1em)'" style="padding: .5em;" [ngStyle.gt-xs]="{margin: '0 .5em'}">
+            <div [fxFlex]="'calc(66%-1em)'" [ngStyle.gt-xs]="{margin: '0 .5em', padding: '.5em'}">
               <input placeholder="Styled input directive without html template..." type="text" appTechInputText>
             </div>
           </div>
@@ -38,9 +37,9 @@ import { STATE_CLICKED, STATE_DEFAULT, STATE_DISABLED, STATE_INVALIDATED, STATE_
           <div [fxLayout]="'row wrap'" [fxLayout.xs]="'column'">
             <div [fxFlex]="'calc(33%-1em)'"
                  style="text-align: right;" [ngStyle.xs]="{'text-align': 'left'}">
-              <app-tech-label [isCompact]="isMobile">Input text component:</app-tech-label>
+              <label appTechInputLabel>Input text component:</label>
             </div>
-            <div [fxFlex]="'calc(66%-1em)'" style="padding: .5em;" [ngStyle.gt-xs]="{margin: '0 .5em'}">
+            <div [fxFlex]="'calc(66%-1em)'" [ngStyle.gt-xs]="{margin: '0 .5em', padding: '.5em'}">
               <app-tech-input-text
                 [state]="inputTextState"
                 [placeholder]="'Input component with validation states and errors template'"
@@ -49,8 +48,8 @@ import { STATE_CLICKED, STATE_DEFAULT, STATE_DISABLED, STATE_INVALIDATED, STATE_
           </div>
           <!--Submit form-->
           <div [fxLayout]="'row wrap'" [fxLayout.xs]="'column'">
-            <div [fxFlex]="'calc(66%-1em)'" [fxFlexOffset.gt-xs]="33"
-                 style="padding: .5em .5em .5em 1em;" [ngStyle.gt-xs]="{margin: '0 .5em'}">
+            <div [fxFlex]="'calc(33%-1em)'">&nbsp;</div>
+            <div [fxFlex]="'calc(66%-1em)'" style="" [ngStyle.gt-xs]="{margin: '0 .5em', padding: '.5em'}">
               <button appTechButtonPrimary>Submit</button>
               <button appTechButton style="margin-left: .5em;">Clear</button>
             </div>
